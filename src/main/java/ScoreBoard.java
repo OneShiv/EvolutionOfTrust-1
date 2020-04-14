@@ -1,4 +1,5 @@
-import com.sun.tools.javac.util.Pair;
+
+import java.util.Objects;
 
 public class ScoreBoard {
 
@@ -17,13 +18,27 @@ public class ScoreBoard {
                 "\n\t playerTwoScore=" + playerTwoScore;
     }
 
-    public void updateScores(int playerOneScore, int playerTwoScore) {
-        this.playerOneScore += playerOneScore;
-        this.playerTwoScore += playerTwoScore;
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof ScoreBoard)) return false;
+        ScoreBoard that = (ScoreBoard) other;
+        return playerOneScore == that.playerOneScore &&
+                playerTwoScore == that.playerTwoScore;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(playerOneScore, playerTwoScore);
+    }
+
+    public void updateScores(ScoreBoard scoreBoard) {
+        this.playerOneScore += scoreBoard.playerOneScore;
+        this.playerTwoScore += scoreBoard.playerTwoScore;
 
     }
 
-    public Pair<Integer, Integer> getScores() {
-        return new Pair<>(playerOneScore,playerTwoScore);
+    public ScoreBoard getScores() {
+        return this;
     }
 }

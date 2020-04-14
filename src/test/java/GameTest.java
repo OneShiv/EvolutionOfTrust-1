@@ -1,4 +1,3 @@
-import com.sun.tools.javac.util.Pair;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,15 +8,15 @@ public class GameTest {
 
     @Test
     public void shouldProcessWhenBothMovesAreCooperate() {
-        Pair<Integer, Integer> scores = game.play();
+        ScoreBoard scores = game.play();
 
-        assertEquals(new Pair<>(2,2), scores);
+        assertEquals(new ScoreBoard(2,2), scores);
     }
 
     @Test
     public void shouldGetFinalScoreAfterFiveRounds() {
-        Pair<Integer, Integer> finalScore = game.playForNRounds(5);
+        ScoreBoard finalScore = game.playForNRounds(5);
 
-        assertEquals(new Pair<>(10,10), finalScore);
+        assertEquals(new ScoreBoard(10,10), finalScore);
     }
 }

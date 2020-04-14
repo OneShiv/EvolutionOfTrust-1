@@ -1,4 +1,3 @@
-import com.sun.tools.javac.util.Pair;
 
 public class Game {
 
@@ -9,7 +8,7 @@ public class Game {
         scoreBoard = new ScoreBoard(0,0);
     }
 
-    public Pair<Integer,Integer> play() {
+    public ScoreBoard play() {
         Player playerOne = new Player();
         Player playerTwo = new Player();
         RuleEngine ruleEngine = new RuleEngine();
@@ -17,12 +16,12 @@ public class Game {
         return ruleEngine.getScore(playerOne.makeMove(),playerTwo.makeMove());
     }
 
-    public Pair<Integer, Integer> playForNRounds(int numberOfRounds) {
+    public ScoreBoard playForNRounds(int numberOfRounds) {
         for(int round = 0; round < numberOfRounds; round++) {
-            Pair<Integer, Integer> score = play();
-            scoreBoard.updateScores(score.fst, score.snd);
+            ScoreBoard score = play();
+            scoreBoard.updateScores(score);
         }
         System.out.println(scoreBoard);
-        return scoreBoard.getScores();
+        return scoreBoard;
     }
 }

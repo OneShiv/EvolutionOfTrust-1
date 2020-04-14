@@ -1,4 +1,3 @@
-import com.sun.tools.javac.util.Pair;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -9,9 +8,9 @@ public class ScoreBoardTest {
 
     @Test
     public void shouldUpdatedPlayersScores() {
-        scoreBoard.updateScores(2,2);
-        Pair<Integer, Integer> finalScore = scoreBoard.getScores();
+        scoreBoard.updateScores(new ScoreBoard(2,2));
+        ScoreBoard finalScore = scoreBoard.getScores();
 
-        assertEquals(new Pair<>(2,2), finalScore);
+        assertEquals(new ScoreBoard(2,2), finalScore);
     }
 }
