@@ -1,6 +1,6 @@
 public class Player {
 
-    public String makeMove() {
-        return "cooperate";
+    public MoveType makeMove() {
+        return MoveType.COOPERATE;
     }
 }

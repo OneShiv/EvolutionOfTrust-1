@@ -2,10 +2,11 @@ import com.sun.tools.javac.util.Pair;
 
 public class RuleEngine {
 
-    private static final String COOPERATE = "cooperate";
-    private static final String CHEAT = "cheat";
+    private static final MoveType COOPERATE = MoveType.COOPERATE;
+    private static final MoveType CHEAT = MoveType.CHEAT;
 
-    public Pair<Integer, Integer> getScore(String firstMove, String secondMove) {
+    //TODO: extract these magic numbers.
+    public Pair<Integer, Integer> getScore(MoveType firstMove, MoveType secondMove) {
         int playerOneScore = 0, playerTwoScore = 0;
         if(COOPERATE.equals(firstMove) && COOPERATE.equals(secondMove)) {
             playerOneScore = 2;
