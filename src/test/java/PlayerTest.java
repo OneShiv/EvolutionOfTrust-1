@@ -5,8 +5,17 @@ public class PlayerTest {
 
     @Test
     public void shouldMakeMoveAlwaysReturnsCooperate() {
-        MoveType moveType = new Player().makeMove();
+        CooperatePlayerBehavior cooperateBehavior = new CooperatePlayerBehavior();
+        MoveType moveType = new Player(cooperateBehavior).makeMove();
 
         assertEquals(MoveType.COOPERATE, moveType);
+    }
+
+    @Test
+    public void shouldMakeMoveReturnsCheat() {
+        CheatPlayerBehavior cheatBehavior = new CheatPlayerBehavior();
+        MoveType moveType = new Player(cheatBehavior).makeMove();
+
+        assertEquals(MoveType.CHEAT, moveType);
     }
 }

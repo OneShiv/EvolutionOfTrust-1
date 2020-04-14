@@ -2,15 +2,17 @@
 public class Game {
 
     private ScoreBoard scoreBoard;
+    private Player playerOne;
+    private Player playerTwo;
 
-    Game() {
+    Game(Player playerOne, Player playerTwo) {
         super();
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
         scoreBoard = new ScoreBoard(0,0);
     }
 
     public ScoreBoard play() {
-        Player playerOne = new Player();
-        Player playerTwo = new Player();
         RuleEngine ruleEngine = new RuleEngine();
 
         return ruleEngine.getScore(playerOne.makeMove(),playerTwo.makeMove());
