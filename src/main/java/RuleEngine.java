@@ -2,22 +2,21 @@ import com.sun.tools.javac.util.Pair;
 
 public class RuleEngine {
 
-    private static final MoveType COOPERATE = MoveType.COOPERATE;
-    private static final MoveType CHEAT = MoveType.CHEAT;
-
     //TODO: extract these magic numbers.
+    private static final int BOTH_COOPERATED = 2;
+    private static final int BOTH_CHEATED = 0;
+    private static final int OPPONENT_CHEATED = -1;
+    private static final int OPPONENT_COOPERATED = 3;
+
     public Pair<Integer, Integer> getScore(MoveType firstMove, MoveType secondMove) {
-        int playerOneScore = 0, playerTwoScore = 0;
-        if(COOPERATE.equals(firstMove) && COOPERATE.equals(secondMove)) {
-            playerOneScore = 2;
-            playerTwoScore = 2;
-        } else if(COOPERATE.equals(firstMove) && CHEAT.equals(secondMove)) {
-            playerOneScore = -1;
-            playerTwoScore = 3;
-        } else if(CHEAT.equals(firstMove) && COOPERATE.equals(secondMove)) {
-            playerOneScore = 3;
-            playerTwoScore = -1;
+        Pair<Integer, Integer> scores = new Pair<>(BOTH_CHEATED, BOTH_CHEATED);
+        if(MoveType.COOPERATE.equals(firstMove) && MoveType.COOPERATE.equals(secondMove)) {
+            scores = new Pair<>(BOTH_COOPERATED, BOTH_COOPERATED);
+        } else if(MoveType.COOPERATE.equals(firstMove) && MoveType.CHEAT.equals(secondMove)) {
+            scores = new Pair<>(OPPONENT_CHEATED, OPPONENT_COOPERATED);
+        } else if(MoveType.CHEAT.equals(firstMove) && MoveType.COOPERATE.equals(secondMove)) {
+            scores = new Pair<>(OPPONENT_COOPERATED, OPPONENT_CHEATED);
         }
-        return new Pair<>(playerOneScore, playerTwoScore);
+        return scores;
     }
 }

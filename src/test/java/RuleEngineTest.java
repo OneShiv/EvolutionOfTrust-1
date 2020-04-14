@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.junit.Assert.*;
 import com.sun.tools.javac.util.Pair;
 
 import static org.junit.Assert.assertEquals;
