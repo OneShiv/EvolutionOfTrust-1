@@ -1,4 +1,7 @@
 import org.junit.Test;
+
+import java.util.Scanner;
+
 import static org.junit.Assert.assertEquals;
 
 public class PlayerTest {
@@ -15,6 +18,14 @@ public class PlayerTest {
     public void shouldMakeMoveReturnsCheat() {
         CheatPlayerBehavior cheatBehavior = new CheatPlayerBehavior();
         MoveType moveType = new Player(cheatBehavior).makeMove();
+
+        assertEquals(MoveType.CHEAT, moveType);
+    }
+
+    @Test
+    public void shouldMakeCheatMoveWhenConsoleInputAsCH() {
+        ConsolePlayerBehavior consoleBehavior = new ConsolePlayerBehavior(new Scanner("CH"));
+        MoveType moveType = new Player(consoleBehavior).makeMove();
 
         assertEquals(MoveType.CHEAT, moveType);
     }
