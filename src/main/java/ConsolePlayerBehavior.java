@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class ConsolePlayerBehavior implements PlayerBehavior {
     private Scanner behaviorScanner;
+
     public ConsolePlayerBehavior(Scanner behaviorScanner) {
         this.behaviorScanner = behaviorScanner;
     }
