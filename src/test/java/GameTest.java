@@ -14,6 +14,7 @@ public class GameTest {
     public void shouldProcessWhenBothMovesAreCooperate() {
         Player cooperatePlayer = new Player(new CooperatePlayerBehavior());
         Player cheatPlayer = new Player(new CooperatePlayerBehavior());
+
         game = new Game(cooperatePlayer, cheatPlayer, ruleEngine);
         ScoreBoard scores = game.play();
 
@@ -24,6 +25,7 @@ public class GameTest {
     public void shouldGetFinalScoreAfterFiveRoundsForBothCooperate() {
         Player cooperatePlayerOne = new Player(new CooperatePlayerBehavior());
         Player cooperatePlayerTwo = new Player(new CooperatePlayerBehavior());
+
         game = new Game(cooperatePlayerOne, cooperatePlayerTwo, ruleEngine);
         ScoreBoard finalScore = game.playForNRounds(5);
 
@@ -34,6 +36,7 @@ public class GameTest {
     public void shouldGetFinalScoreAfterFiveRoundsForCooperateAndCheat() {
         Player cooperatePlayer = new Player(new CooperatePlayerBehavior());
         Player cheatPlayer = new Player(new CheatPlayerBehavior());
+
         game = new Game(cooperatePlayer, cheatPlayer, ruleEngine);
         ScoreBoard finalScore = game.playForNRounds(5);
 
@@ -56,7 +59,6 @@ public class GameTest {
                 .thenReturn(new ScoreBoard(3,-1));
 
         game = new Game(cheatPlayer, consolePlayer, ruleEngine);
-
         ScoreBoard finalScore = game.playForNRounds(2);
 
         assertEquals(new ScoreBoard(3,-1), finalScore);
@@ -65,7 +67,8 @@ public class GameTest {
     @Test
     public void shouldReturnFinalScoreCooperatePlayerAndConsolePlayer() {
         Player cooperatePlayer = new Player(new CooperatePlayerBehavior());
-        Player consolePlayer = new Player(new ConsolePlayerBehavior(new Scanner("CH CO")));
+        Player consolePlayer = new Player(new ConsolePlayerBehavior(new Scanner("CH\nCO")));
+
         game = new Game(cooperatePlayer, consolePlayer, ruleEngine);
         ScoreBoard finalScore = game.playForNRounds(2);
 

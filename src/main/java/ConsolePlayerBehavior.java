@@ -9,7 +9,8 @@ public class ConsolePlayerBehavior implements PlayerBehavior {
 
     @Override
     public MoveType move() {
-        String consoleInput = behaviorScanner.next();
+        System.out.println("Enter Your Move (CH or CO): ");
+        String consoleInput = behaviorScanner.nextLine();
         return MoveType.getMove(consoleInput);
     }
 }

@@ -22,8 +22,8 @@ public class Game {
         for(int round = 0; round < numberOfRounds; round++) {
             ScoreBoard score = play();
             scoreBoard.updateScores(score);
+            System.out.println(scoreBoard);
         }
-        System.out.println(scoreBoard);
         return scoreBoard;
     }
 }

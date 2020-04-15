@@ -13,9 +13,9 @@ public class ScoreBoard {
 
     @Override
     public String toString() {
-        return "ScoreBoard:\n" +
-                "\t playerOneScore=" + playerOneScore +
-                "\n\t playerTwoScore=" + playerTwoScore;
+        return "Score: " +
+                "\t player1 :" + playerOneScore +
+                "\t player2 :" + playerTwoScore;
     }
 
     @Override
